@@ -49,11 +49,242 @@
         </section>
 
         <section>
-          <h2 class="slide-header">Why is testing so important?</h2>
-          <blockquote style="line-height:1.2em">
-            Testing is about gaining confidence that your code does what you think it should do
-          </blockquote>
-          <p><a href="https://github.com/juliemr">@juliemr</a></p>
+          <h2 class="slide-header">How started</h2>
+          <ul>
+            <li>Was around 2008/2009</li>
+            <li></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="slide-header">Data Binding and Directives</h2>
+          <p>AngularJS lets you extend HTML vocabulary for your application.</p>
+          <p>Directives is a unique and powerful feature available only in Angular. Directives let you invent new HTML syntax, specific to your application.</p>
+        </section>
+
+        <section>
+          <h2>Reusable Components</h2>
+          <p>We use directives to create reusable components. A component allows you to hide complex DOM structure, CSS, and behavior. This lets you focus either on what the application does or how the application looks separately.</p>
+        </section>
+
+        <section>
+          <h2><code>ngApp</code></h2>
+          <pre><code class="html">&lt;div ng-controller="ngAppDemoController"&gt;
+I can add: {{a}} + {{b}} =  {{ a+b }}
+&lt;/div&gt;</code></pre>
+          <pre><code class="javascript">angular.module('ngAppDemo', []).controller('ngAppDemoController', function($scope) {
+  $scope.a = 1;
+  $scope.b = 2;
+});</code></pre>
+        </section>
+
+        <section>
+          <h2><code>ngBind</code> <code>ngModel</code></h2>
+          <p>Data-binding is an automatic way of updating the view whenever the model changes</p>
+          <p>as well as updating the model whenever the view changes.</p>
+          <p>This is awesome because it eliminates DOM manipulation from the list of things you have to worry about.</p>
+          <pre><code class="html">&lt;div ng-controller="ExampleController"&gt
+  Enter name: &lt;input type="text" ng-model="name"&gt&lt;br&gt;
+  Hello &lt;span ng-bind="name"&gt;&lt;/span&gt;!
+&lt;/div&gt;</code></pre>
+          <pre><code class="javascript">angular.module('bindExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.name = 'Whirled';
+    }]);</code></pre>
+        </section>
+
+        <section>
+          <h2><code>ngClick</code></h2>
+          <pre><code class="html">&lt;button ng-click="count = count + 1" ng-init="count=0"&gt;
+  Increment
+&lt/button&gt;
+count: {{count}}</code></pre>
+        </section>
+
+        <section>
+          <h2><code>ngShow</code></h2>
+          <pre><code class="html">&lt;div ng-show="myValue"&gt;&lt;/div&gt;</code></pre>
+        </section>
+
+        <section>
+          <h2><code>ngHide</code></h2>
+          <pre><code class="html">&lt;div ng-hide="myValue"&gt;&lt;/div&gt;</code></pre>
+        </section>
+
+        <section>
+          <h2><code>ngRepeat</code></h2>
+          <pre><code class="html">&lt;header ng-repeat="item in items"&gt;
+    Header {{ item }}
+  &lt;/header&gt;</code></pre>
+        </section>
+
+        <section>
+          <h2 class="slide-header">Filters</h2>
+        </section>
+
+        <section>
+          <h2><code>filter</code></h2>
+          <pre><code class="html">&lt;div ng-init="friends = [{name:'John', phone:'555-1276'},
+                         {name:'Mary', phone:'800-BIG-MARY'},
+                         {name:'Mike', phone:'555-4321'},
+                         {name:'Adam', phone:'555-5678'},
+                         {name:'Julie', phone:'555-8765'},
+                         {name:'Juliette', phone:'555-5678'}]">&lt;/div&gt;
+
+Search: &lt;input ng-model="searchText"&gt;
+&lt;table id="searchTextResults"&gt;
+  &lt;tr&gt;&lt;t&gt;>Name&lt;/th&gt;&lt;th>Phone&lt;/th>&lt;/tr&gt;
+  &lt;tr ng-repeat="friend in friends | filter:searchText"&gt;
+    &lt;td&gt;{{friend.name}}&lt;/td&gt;
+    &lt;td&gt;{{friend.phone}}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+Any: &lt;input ng-model="search.$"&gt; &lt;br&gt;
+Name only &lt;input ng-model="search.name"&gt;&lt;br&gt;
+Phone only &lt;input ng-model="search.phone"&gt;&lt;br&gt;
+Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
+&lt;table id="searchObjResults"&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th>&lt;th>Phone&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr ng-repeat="friendObj in friends | filter:search:strict"&gt;
+    &lt;td&gt;{{friendObj.name}}&lt;/td&gt;
+    &lt;td&gt;{{friendObj.phone}}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        </section>
+
+        <section>
+          <h2><code>currency</code></h2>
+          <pre><code class="html">&lt;div ng-controller="ExampleController"&gt;
+  &lt;input type="number" ng-model="amount"&gt; &lt;br&gt;
+  default currency symbol ($): &lt;span id="currency-default"&gt;{{amount | currency}}&lt;/span&gt;&lt;br&gt;
+  custom currency identifier (USD$): &lt;span&gt;{{amount | currency:"USD$"}}&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          <pre><code class="javascript">angular.module('currencyExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.amount = 1234.56;
+    }]);</code></pre>
+        </section>
+
+        <section>
+          <h2><code>date</code></h2>
+          <pre><code class="html">&lt;span ng-non-bindable&gt;{{1288323623006 | date:'medium'}}&lt;/span&gt;:
+    &lt;span&gt;{{1288323623006 | date:'medium'}}&lt;/span&gt;<br>
+&lt;span ng-non-bindable&gt;{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}&lt;/span&gt;:
+   &lt;span&gt;{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}&lt;/span&gt;<br>
+&lt;span ng-non-bindable&gt;{{1288323623006 | date:'MM/dd/yyyy @ h:mma'}}&lt;/span&gt;:
+   &lt;span&gt;{{'1288323623006' | date:'MM/dd/yyyy @ h:mma'}}&lt;/span&gt;&lt;br&gt;</code></pre>
+        </section>
+
+        <section>
+          <h2><code>orderBy</code></h2>
+          <pre><code class="html"></code></pre>
+        </section>
+
+        <section>
+          <h2 class="slide-header">Modules</h2>
+        </section>
+
+        <section>
+          <h2 class="slide-header">Controllers</h2>
+          <p>Controllers are the behavior behind the DOM elements.</p>
+        </section>
+
+        <section>
+          <h2 class="slide-header">Factories</h2>
+        </section>
+
+        <section>
+          <h2>Injectable</h2>
+          <p>The dependency injection in AngularJS allows you to declaratively describe how your application is wired.</p>
+        </section>
+
+        <section>
+          <h2><code>$http</code></h2>
+          <pre><code class="javascript">$http({method: 'GET', url: '/someUrl'}).
+    success(function(data, status, headers, config) {
+      // this callback will be called asynchronously
+      // when the response is available
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });</code></pre>
+        </section>
+
+        <section>
+          <h2><code>$parse</code></h2>
+          <pre><code class="javascript">var getter = $parse('user.name');
+  var setter = getter.assign;
+  var context = {user:{name:'angular'}};
+  var locals = {user:{name:'local'}};
+</code></pre>
+        </section>
+
+        <section>
+          <h2><code>$rootScope</code></h2>
+          <pre><code class="javascript"></code></pre>
+        </section>
+
+        <section>
+          <h2><code>$timeout</code></h2>
+          <pre><code class="javascript">$timeout(fn, [delay], [invokeApply]);</code></pre>
+        </section>
+
+        <section>
+          <h2 class="slide-header">Routes</h2>
+        </section>
+
+        <section>
+          <h2><code>$route</code></h2>
+          <pre><code class="javascript"></code></pre>
+        </section>
+
+        <section>
+          <h2><code>ngView</code></h2>
+          <pre><code class="javascript"></code></pre>
+        </section>
+
+        <section>
+          <h2 class="slide-header">To Do</h2>
+        </section>
+
+        <section>
+          
+        </section>
+
+        <section>
+          <pre><code class="javascript">angular.module('todoApp', [])
+  .controller('TodoController', ['$scope', function($scope) {
+    $scope.todos = [
+      {text:'learn angular', done:true},
+      {text:'build an angular app', done:false}];
+ 
+    $scope.addTodo = function() {
+      $scope.todos.push({text:$scope.todoText, done:false});
+      $scope.todoText = '';
+    };
+ 
+    $scope.remaining = function() {
+      var count = 0;
+      angular.forEach($scope.todos, function(todo) {
+        count += todo.done ? 0 : 1;
+      });
+      return count;
+    };
+ 
+    $scope.archive = function() {
+      var oldTodos = $scope.todos;
+      $scope.todos = [];
+      angular.forEach(oldTodos, function(todo) {
+        if (!todo.done) $scope.todos.push(todo);
+      });
+    };
+  }]);</code></pre>
+        </section>
+
+        <section>
+          <h2 class="slide-header">Best Practices</h2>
         </section>
 
       </div> 
