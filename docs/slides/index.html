@@ -1,5 +1,5 @@
 <!doctype html>  
-<html lang="en">
+<html lang="en" ng-app="tasteAngulajs">
   <head>
     <meta charset="utf-8">
     
@@ -15,6 +15,7 @@
 
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/protractor.css" id="theme">
 
@@ -87,39 +88,92 @@
         </section>
 
         <section>
+          <h2><code>ngApp</code></h2>
+          <pre ng-non-bindable><code class="html">&lt;html ng-app="tasteAngulajs"&gt;
+&lt;head&gt;
+  &lt;script src="bower_components/angular/angular.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;I can add: {{ a }} + {{ b }} =  {{ a + b }}&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+          <div ng-init="a=1;b=2;">
+            <p>I can add: {{ a }} + {{ b }} =  {{ a + b }}</p>
+          </div>
+        </section>
+
+        <section>
+          <h2><code>ngModel</code> <code>ngBind</code></h2>
+          <pre ng-non-bindable><code class="html">&lt;input type="text" ng-model="data.text" /&gt;
+&lt;p&gt;Message: {{ data.text }}&lt;/p&gt;
+&lt;div class="{{ data.text }}"&gt;
+ Bootstrap component
+&lt;/div&gt;</code></pre>
+          <br />
+          <div class="form-inline">
+            <label>Text</label><input type="text" class="form-control" ng-model="data.text" />
+          </div>
+          <br />
+          <p>Text: {{ data.text }}</p>
+          <br />
+          <div class="{{ data.text }}">
+            Bootstrap component
+          </div>
+        </section>
+
+        <section>
+          <h3>Angular lab</h3>
+          <p>Write <p>
+        </section>
+
+        <section>
+          <h3>Angular lab solution</h3>
+          <p>Write a div with Bootstrap CSS class bind by the date.text model<p>
+            <pre ng-non-bindable><code class="html">&lt;input type="text" ng-model="data.text" /&gt;
+&lt;div class="{{ data.text }}"&gt;
+ Bootstrap component
+&lt;/div&gt;</code></pre>
+          <br />
+          <div class="form-inline">
+            <label>Text</label><input type="text" class="form-control" ng-model="data.text" />
+          </div>
+          <br />
+          <div class="{{ data.text }}">
+            Bootstrap component
+          </div>
+        </section>
+
+        <section>
+          <h2 class="slide-header"
+          style="font-size:3em;margin-top: 50px">Controllers</h2>
+          <p>Controllers are the behavior behind the DOM elements.</p>
+        </section>
+
+        <section>
+          <h2><code>ngController</code></h2>
+          <pre ng-non-bindable><code class="html">&lt;div ng-controller="tasteController"&gt;
+  &lt;input class="form-control" placeholder="{{ data.placeholder }}" /&gt;
+&lt;/div&gt;</code></pre>
+          <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])
+.controller('tasteController', function($scope) {
+  $scope.data = { 'placeholder': "Che c'è di nuovo?" };
+});</code></pre>
+          <br />
+          <div ng-controller="tasteController">
+            <img style="width: 39px;height: 39px;border-radius: 4px; 
+            display:inline-block; margin:0; vertical-align: bottom;" 
+            src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
+            <input class="form-control" style="display:inline-block; width:60%; vertical-align: bottom;" placeholder="{{ data.placeholder }}" />
+          </div>
+        </section>
+
+        <section>
           <h2>Reusable Components</h2>
           <p>We use directives to create reusable components. A component allows you to hide complex DOM structure, CSS, and behavior. This lets you focus either on what the application does or how the application looks separately.</p>
         </section>
 
         <section>
-          <h2><code>ngApp</code></h2>
-          <pre><code class="html">&lt;div ng-controller="ngAppDemoController"&gt;
-I can add: {{a}} + {{b}} =  {{ a+b }}
-&lt;/div&gt;</code></pre>
-          <pre><code class="javascript">angular.module('ngAppDemo', []).controller('ngAppDemoController', function($scope) {
-  $scope.a = 1;
-  $scope.b = 2;
-});</code></pre>
-        </section>
-
-        <section>
-          <h2><code>ngBind</code> <code>ngModel</code></h2>
-          <p>Data-binding is an automatic way of updating the view whenever the model changes</p>
-          <p>as well as updating the model whenever the view changes.</p>
-          <p>This is awesome because it eliminates DOM manipulation from the list of things you have to worry about.</p>
-          <pre><code class="html">&lt;div ng-controller="ExampleController"&gt
-  Enter name: &lt;input type="text" ng-model="name"&gt&lt;br&gt;
-  Hello &lt;span ng-bind="name"&gt;&lt;/span&gt;!
-&lt;/div&gt;</code></pre>
-          <pre><code class="javascript">angular.module('bindExample', [])
-    .controller('ExampleController', ['$scope', function($scope) {
-      $scope.name = 'Whirled';
-    }]);</code></pre>
-        </section>
-
-        <section>
           <h2><code>ngClick</code></h2>
-          <pre><code class="html">&lt;button ng-click="count = count + 1" ng-init="count=0"&gt;
+          <pre ng-non-bindable><code class="html">&lt;button ng-click="count = count + 1" ng-init="count=0"&gt;
   Increment
 &lt/button&gt;
 count: {{count}}</code></pre>
@@ -127,17 +181,22 @@ count: {{count}}</code></pre>
 
         <section>
           <h2><code>ngShow</code></h2>
-          <pre><code class="html">&lt;div ng-show="myValue"&gt;&lt;/div&gt;</code></pre>
+          <pre ng-non-bindable><code class="html">&lt;div ng-show="myValue"&gt;&lt;/div&gt;</code></pre>
         </section>
 
         <section>
           <h2><code>ngHide</code></h2>
-          <pre><code class="html">&lt;div ng-hide="myValue"&gt;&lt;/div&gt;</code></pre>
+          <pre ng-non-bindable><code class="html">&lt;div ng-hide="myValue"&gt;&lt;/div&gt;</code></pre>
+        </section>
+
+        <section>
+          <h3>Angular lab</h3>
+          <p>Write <p>
         </section>
 
         <section>
           <h2><code>ngRepeat</code></h2>
-          <pre><code class="html">&lt;header ng-repeat="item in items"&gt;
+          <pre ng-non-bindable><code class="html">&lt;header ng-repeat="item in items"&gt;
     Header {{ item }}
   &lt;/header&gt;</code></pre>
         </section>
@@ -148,8 +207,13 @@ count: {{count}}</code></pre>
         </section>
 
         <section>
+          <h3>Angular lab</h3>
+          <p>Write <p>
+        </section>
+
+        <section>
           <h2><code>filter</code></h2>
-          <pre><code class="html">&lt;div ng-init="friends = [{name:'John', phone:'555-1276'},
+          <pre ng-non-bindable><code class="html">&lt;div ng-init="friends = [{name:'John', phone:'555-1276'},
                          {name:'Mary', phone:'800-BIG-MARY'},
                          {name:'Mike', phone:'555-4321'},
                          {name:'Adam', phone:'555-5678'},
@@ -180,12 +244,12 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2><code>currency</code></h2>
-          <pre><code class="html">&lt;div ng-controller="ExampleController"&gt;
+          <pre ng-non-bindable><code class="html">&lt;div ng-controller="ExampleController"&gt;
   &lt;input type="number" ng-model="amount"&gt; &lt;br&gt;
   default currency symbol ($): &lt;span id="currency-default"&gt;{{amount | currency}}&lt;/span&gt;&lt;br&gt;
   custom currency identifier (USD$): &lt;span&gt;{{amount | currency:"USD$"}}&lt;/span&gt;
 &lt;/div&gt;</code></pre>
-          <pre><code class="javascript">angular.module('currencyExample', [])
+          <pre ng-non-bindable><code class="javascript">angular.module('currencyExample', [])
     .controller('ExampleController', ['$scope', function($scope) {
       $scope.amount = 1234.56;
     }]);</code></pre>
@@ -193,7 +257,7 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2><code>date</code></h2>
-          <pre><code class="html">&lt;span ng-non-bindable&gt;{{1288323623006 | date:'medium'}}&lt;/span&gt;:
+          <pre ng-non-bindable><code class="html">&lt;span ng-non-bindable&gt;{{1288323623006 | date:'medium'}}&lt;/span&gt;:
     &lt;span&gt;{{1288323623006 | date:'medium'}}&lt;/span&gt;<br>
 &lt;span ng-non-bindable&gt;{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}&lt;/span&gt;:
    &lt;span&gt;{{1288323623006 | date:'yyyy-MM-dd HH:mm:ss Z'}}&lt;/span&gt;<br>
@@ -203,7 +267,12 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2><code>orderBy</code></h2>
-          <pre><code class="html"></code></pre>
+          <pre ng-non-bindable><code class="html"></code></pre>
+        </section>
+
+        <section>
+          <h3>Angular lab</h3>
+          <p>Write <p>
         </section>
 
         <section>
@@ -213,23 +282,27 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2 class="slide-header"
-          style="font-size:3em;margin-top: 50px">Controllers</h2>
-          <p>Controllers are the behavior behind the DOM elements.</p>
+          style="font-size:3em;margin-top: 50px">Service</h2>
         </section>
 
         <section>
-          <h2 class="slide-header"
-          style="font-size:3em;margin-top: 50px">Factories</h2>
-        </section>
-
-        <section>
-          <h2>Injectable</h2>
-          <p>The dependency injection in AngularJS allows you to declaratively describe how your application is wired.</p>
+          <h2><code>factory</code></h2>
+          <pre ng-non-bindable><code class="html"></code></pre>
+          <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', []);
+.factory('Coffee', function() {
+    return {'listType': ['Espresso', 'Macchiato', 'Latte', 'Cappucino', 'Gibraltar']}
+})
+.controller('tastyController', function($scope, Coffee) {
+  $scope.coffee = Coffee;
+}
+.controller('awesomeController', function($scope, Coffee) {
+  $scope.coffee = Coffee;
+}</code></pre>
         </section>
 
         <section>
           <h2><code>$http</code></h2>
-          <pre><code class="javascript">$http({method: 'GET', url: '/someUrl'}).
+          <pre ng-non-bindable><code class="javascript">$http({method: 'GET', url: '/someUrl'}).
     success(function(data, status, headers, config) {
       // this callback will be called asynchronously
       // when the response is available
@@ -242,7 +315,7 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2><code>$parse</code></h2>
-          <pre><code class="javascript">var getter = $parse('user.name');
+          <pre ng-non-bindable><code class="javascript">var getter = $parse('user.name');
   var setter = getter.assign;
   var context = {user:{name:'angular'}};
   var locals = {user:{name:'local'}};
@@ -251,12 +324,12 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2><code>$rootScope</code></h2>
-          <pre><code class="javascript"></code></pre>
+          <pre ng-non-bindable><code class="javascript"></code></pre>
         </section>
 
         <section>
           <h2><code>$timeout</code></h2>
-          <pre><code class="javascript">$timeout(fn, [delay], [invokeApply]);</code></pre>
+          <pre ng-non-bindable><code class="javascript">$timeout(fn, [delay], [invokeApply]);</code></pre>
         </section>
 
         <section>
@@ -265,24 +338,21 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2><code>$route</code></h2>
-          <pre><code class="javascript"></code></pre>
+          <pre ng-non-bindable><code class="javascript"></code></pre>
         </section>
 
         <section>
           <h2><code>ngView</code></h2>
-          <pre><code class="javascript"></code></pre>
+          <pre ng-non-bindable><code class="javascript"></code></pre>
+        </section>
+
+         <section>
+          <h3>Angular lab</h3>
+          <p>Write <p>
         </section>
 
         <section>
-          <h2 class="slide-header">To Do</h2>
-        </section>
-
-        <section>
-          
-        </section>
-
-        <section>
-          <pre><code class="javascript">angular.module('todoApp', [])
+          <pre ng-non-bindable><code class="javascript">angular.module('todoApp', [])
   .controller('TodoController', ['$scope', function($scope) {
     $scope.todos = [
       {text:'learn angular', done:true},
@@ -318,7 +388,7 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
 
         <section>
           <h2>Directory Structure</h2>
-<pre><code style="font-size:1.1em;line-height:130%">projectfolder/
+<pre ng-non-bindable><code style="font-size:1.1em;line-height:130%">projectfolder/
   |-- css/
   |-- js/
   |-- img/
@@ -388,6 +458,7 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
       	]
       });
     </script>
+    <script src="../../bower_components/angular/angular.js"></script>
     <script src="js/zepto.min.js"></script>
     <script>
       Zepto(function($){
@@ -405,6 +476,12 @@ Equality &lt;input type="checkbox" ng-model="strict">&lt;br&gt;
           ].join(''));
         });
         tableOfContents.html( tableList );
+      });
+    </script>
+    <script>
+      angular.module('tasteAngulajs', [])
+      .controller('tasteController', function($scope) {
+        $scope.data = { 'placeholder': "Che c'è di nuovo?" };
       });
     </script>
   </body>
