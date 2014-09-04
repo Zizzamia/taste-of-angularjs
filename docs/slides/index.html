@@ -58,6 +58,7 @@
 
         <section>
           <h2 class="slide-header">The Zen of Angular</h2>
+          <p>Angular is built around the belief that declarative code is better than imperative when it comes to building UIs and wiring software components together, while imperative code is excellent for expressing business logic.</p>
         </section>
 
         <section>
@@ -97,7 +98,7 @@
   &lt;p&gt;I can add: {{ a }} + {{ b }} =  {{ a + b }}&lt;/p&gt;
 &lt;/body&gt;</code></pre>
           <div ng-init="a=1;b=2;">
-            <p>I can addr {{ a }} + {{ b }} =  {{ a + b }}</p>
+            <p>I can add {{ a }} + {{ b }} =  {{ a + b }}</p>
           </div>
         </section>
 
@@ -501,24 +502,92 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
         <section>
           <h2 class="slide-header"
           style="font-size:3em;margin-top: 50px">#ngTasty</h2>
+          <a href="http://go/ngTasty" target="_blank">go/ngTasty</a>
+          <p>A lightweight, flexible, and tasty collection of reusable UI 
+            components for AngularJS, like grandma used to make.</p>
         </section>
 
         <section>
-          <h3>Angular lab</h3>
-          <p>Write use ngTasty<p>
+          <h3>#ngTasty simple table</h3>
+          <pre ng-non-bindable><code class="html" style="font-size: 0.8.4em;
+padding: 10px; line-height: 16px;">&lt;script src="bower_components/ng-tasty/ng-tasty-tpls.min.js"&gt;&lt;/script&gt;
+&lt;div tasty-table resource="resource"&gt;
+  &lt;table class="table table-striped table-condensed"&gt;
+    &lt;thead tasty-thead&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr ng-repeat="row in rows"&gt;
+        &lt;td&gt;{{ row.name }}&lt;/td&gt;
+        &lt;td&gt;{{ row.star }}&lt;/td&gt;
+        &lt;td&gt;{{ row.sfLocation }}&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;div tasty-pagination>&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <pre ng-non-bindable><code class="javascript" style="font-size: 0.8.4em;
+padding: 10px; line-height: 16px;">angular.module('tasteAngulajs', ['ngTasty'])
+.controller('tasteController', function($scope) {
+  $scope.resource = {
+    "header": [
+      { "key": "name", "name": "Name" },
+      { "key": "star", "name": "star" },
+      { "key": "sfLocation", "name": "SF Location" }
+    ],
+    "rows": [
+      { "name": "Ritual Coffee Roasters", "star": "★★★★★", "sf-location": "Hayes Valley"},
+      ...
+      { "name": "Flywheel Coffee Roasters", "star": "★★★★★", "sf-location": "Upper Haight" }
+    ]
+  };
+});</code></pre>
+        </section>
+
+        <section ng-controller="tasteController">
+          <h3>#ngTasty simple table</h3>
+          <div tasty-table resource="resource">
+            <table class="table table-striped table-condensed">
+              <thead tasty-thead></thead>
+              <tbody>
+                <tr ng-repeat="row in rows">
+                  <td>{{ row.name }}</td>
+                  <td>{{ row.star }}</td>
+                  <td>{{ row.sfLocation }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div tasty-pagination></div>
+          </div>
         </section>
 
         <section>
           <h2 class="slide-header">Learning Resources</h2>
           <ul>
-            <li>https://github.com/Zizzamia/taste-of-angularjs</li>
-            <li>https://docs.angularjs.org/guide</li>
-            <li>https://egghead.io</li>
+            <li>
+              <a href="https://github.com/Zizzamia/taste-of-angularjs" target="_blank">
+                github.com/Zizzamia/taste-of-angularjs
+              </a>
+            </li>
+            <li>
+              <a href="https://docs.angularjs.org/guide" target="_blank">
+                docs.angularjs.org/guide
+              </a>
+            </li>
+            <li>
+              <a href="https://egghead.io/technologies/angularjs?order=ASC" target="_blank">
+                egghead.io
+              </a>
+            </li>
+            <li>
+              <a href="https://egghead.io" target="_blank">
+                egghead.io
+              </a>
+            </li>
           </ul>
         </section>
 
         <section>
-          <h3 style="font-size:1.2em;margin-bottom:2em">Remember, 
+          <img src="img/angularjs-logo.png" height="300" style="border:none;box-shadow:none" />
+          <h3 style="font-size:1.7em;margin-bottom:2em">Remember, 
           with great power, comes great responsibility.</h3>
         </section>
 
@@ -559,7 +628,8 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
       	]
       });
     </script>
-    <script src="../../bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/ng-tasty/ng-tasty-tpls.min.js"></script>
     <script src="js/zepto.min.js"></script>
     <script>
       Zepto(function($){
@@ -580,7 +650,7 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
       });
     </script>
     <script>
-      angular.module('tasteAngulajs', [])
+      angular.module('tasteAngulajs', ['ngTasty'])
       .controller('tasteController', function($scope) {
         $scope.data = { 'placeholder': "Che c'è di nuovo?" };
 
@@ -596,6 +666,27 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
         };
         $scope.hide = function () {
           $scope.showTiramisu = false;
+        };
+
+        $scope.resource = {
+          "header": [
+            {
+              "key": "name", 
+              "name": "Name"
+            },
+            {
+              "key": "star", 
+              "name": "star"
+            },
+            {
+              "key": "sf-location", 
+              "name": "SF Location"
+            }
+          ],
+          "rows": [
+            { "name": "Ritual Coffee Roasters", "star": "★★★★★", "sf-location": "Hayes Valley"},
+            { "name": "Flywheel Coffee Roasters", "star": "★★★★★", "sf-location": "Upper Haight" }
+          ]
         };
       });
     </script>

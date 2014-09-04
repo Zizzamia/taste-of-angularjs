@@ -1,0 +1,20 @@
+{
+  "name": "ng-tasty",
+  "version": "0.2.6",
+  "homepage": "https://github.com/Zizzamia/ng-tasty",
+  "authors": [
+    "@zizzamia"
+  ],
+  "main": "./ng-tasty.js",
+  "dependencies": {},
+  "_release": "0.2.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.6",
+    "commit": "cf5eaedd5267871f0110a8110d3ad5ad7cd9147d"
+  },
+  "_source": "git://github.com/Zizzamia/bower-ng-tasty.git",
+  "_target": "~0.2.6",
+  "_originalSource": "ng-tasty",
+  "_direct": true
+}
