@@ -44,12 +44,14 @@
           </p>
         </section>
 
+
         <section>
           <h2 class="slide-header">What is AngularJS?</h2>
           <blockquote style="line-height:1.2em">
             Angular is a Javavascript framework that lets you extend HTML's syntax
           </blockquote>
         </section>
+
 
         <section>
           <h2 class="slide-header">The Zen of Angular</h2>
@@ -58,11 +60,13 @@
             while imperative code is excellent for expressing business logic.</p>
         </section>
 
+
         <section>
           <a href="https://github.com/angular/angular.js">
             <img src="img/angular-on-github.png" width="900" alt="">
           </a>
         </section>
+
 
         <section>
           <h2 class="slide-header">Trend: 2010-2014</h2>
@@ -71,6 +75,7 @@
           </a>
         </section>
 
+
         <section>
           <h2>Trend: 2010-2014</h2>
           <a href="http://www.google.com/trends/explore#cat=0-5&q=angularjs%2C%20backbone.js%2C%20ember.js&date=1%2F2010%2056m&cmpt=q">
@@ -78,10 +83,12 @@
           </a>
         </section>
 
+
         <section>
           <h2 class="slide-header" 
           style="font-size:3em;margin-top: 50px">Directives <br /> & <br /> Data Binding</h2>
         </section>
+
 
         <section>
           <h2><code>ngApp</code></h2>
@@ -97,6 +104,7 @@
           </div>
         </section>
 
+
         <section>
           <h2><code>ngBind</code></h2>
           <pre ng-non-bindable><code class="html">&lt;div ng-init="text='tiramisu'"&gt;
@@ -106,6 +114,7 @@
             <p>Text: {{ text }}</p>
           </div>
         </section>
+
 
         <section>
           <h2><code>ngModel</code></h2>
@@ -117,13 +126,10 @@
           <p class="text-left">{{ text2 }}</p>
         </section>
 
+
         <section>
           <h3>Tasty lab one</h3>
           <p>Change the html to bind the class attribute<p>
-          <pre ng-non-bindable><code class="html">&lt;input type="text" /&gt;
-&lt;div&gt;
- Bootstrap component
-&lt;/div&gt;</code></pre>
           <br />
           <input type="text" class="form-control" ng-model="className" />
           <br />
@@ -132,20 +138,15 @@
           </div>
         </section>
 
+
         <section>
           <h3>Tasty lab one solution</h3>
-          <p>Change the html to bind the class attribute<p>
           <pre ng-non-bindable><code class="html">&lt;input type="text" ng-model="className" /&gt;
 &lt;div ng-class="className"&gt;
  Bootstrap component
 &lt;/div&gt;</code></pre>
-          <br />
-          <input type="text" class="form-control" ng-model="className" />
-          <br />
-          <div ng-class="className">
-            Bootstrap component
-          </div>
         </section>
+
 
         <section>
           <h2><code>ngController</code></h2>
@@ -159,12 +160,13 @@
 });</code></pre>
           <br />
           <div ng-controller="tasteController">
-            <img style="width: 39px;height: 39px;border-radius: 4px; 
+            <img style="width: 26px;height: 26px;border-radius: 4px; 
             display:inline-block; margin:0; vertical-align: bottom;" 
             src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
             <input class="form-control" style="display:inline-block; width:60%; vertical-align: bottom;" placeholder="{{ data.placeholder }}" />
           </div>
         </section>
+
 
         <section>
           <h2>Reusable Components</h2>
@@ -173,6 +175,7 @@
           <p>This lets you focus either on what the application does <br />
             or how the application looks separately.</p>
         </section>
+
 
         <section>
           <h2><code>ngClick</code></h2>
@@ -192,34 +195,40 @@
           </div>
         </section>
 
+
         <section>
           <h2><code>ngShow</code></h2>
           <pre ng-non-bindable><code class="html">&lt;button ng-click="showTiramisu = true"&gt;show&lt;/button&gt;
 &lt;button ng-click="showTiramisu = fale"&gt;hide&lt;/button&gt;
-&lt;p ng-show="showTiramisu"&gt;Element&lt;/p&gt;</code></pre>
+&lt;img src="img/tiramisu-logo.png" ng-show="showTiramisu" /&gt;</code></pre>
           <button class="btn btn-default" ng-click="showTiramisu = true">show</button>
           <button class="btn btn-default" ng-click="showTiramisu = false">hide</button><br />
           <img src="img/tiramisu-logo.png" ng-show="showTiramisu" style="border:0;box-shadow:none;" />
         </section>
 
+
         <section>
           <h2><code>ngHide</code></h2>
           <pre ng-non-bindable><code class="html">&lt;button ng-click="hideTiramisu = true"&gt;show&lt;/button&gt;
 &lt;button ng-click="hideTiramisu = fale"&gt;hide&lt;/button&gt;
-&lt;p ng-hide="hideTiramisu"&gt;Element&lt;/p&gt;</code></pre>
+&lt;img src="img/tiramisu-logo.png" ng-show="hideTiramisu" /&gt;</code></pre>
           <button class="btn btn-default" ng-click="hideTiramisu = true">hide</button>
           <button class="btn btn-default" ng-click="hideTiramisu = false">show</button><br />
           <img src="img/tiramisu-logo.png" ng-hide="hideTiramisu" style="border:0;box-shadow:none;" />
         </section>
 
+
         <section>
           <h3>Tasty lab two</h3>
           <p>Write a function inside your controller that allow to show and hide an element<p>
-          <pre ng-non-bindable><code class="html">&lt;button&gt;show&lt;/button&gt;
-&lt;button&gt;hide&lt;/button&gt;
-&lt;img src="tiramisu-logo.png" /&gt;</code></pre>
-          <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])</code></pre>
+          <div ng-controller="tasteController">
+            <button class="btn btn-default" ng-click="show()">Show</button>
+            <button class="btn btn-default" ng-click="hide()">Hide</button><br />
+            <img src="img/tiramisu-logo.png" ng-show="showTiramisu" 
+            style="border:0;box-shadow:none;" />
+          </div>
         </section>
+
 
         <section>
           <h3>Tasty lab two solution</h3>
@@ -238,13 +247,8 @@
     $scope.showTiramisu = false;
   };
 });</code></pre>
-          <div ng-controller="tasteController">
-            <button class="btn btn-default" ng-click="show()">Show</button>
-            <button class="btn btn-default" ng-click="hide()">Hide</button><br />
-            <img src="img/tiramisu-logo.png" ng-show="showTiramisu" 
-            style="border:0;box-shadow:none;height:80px;" />
-          </div>
         </section>
+
 
         <section>
           <h2><code>ngRepeat</code></h2>
@@ -266,10 +270,12 @@
           </ul>
         </section>
 
+
         <section>
           <h2 class="slide-header"
           style="font-size:3em;margin-top: 50px">Filters</h2>
         </section>
+
 
         <section>
           <h2><code>date</code></h2>
@@ -284,6 +290,7 @@
             <li>{{ '1288323623006' | date:'yyyy-MM-dd HH:mm:ss Z' }}</li>
           </ul>
         </section>
+
 
         <section>
           <h2><code>filter</code></h2>
@@ -317,14 +324,15 @@
           </table>
         </section>
 
+
         <section>
-          <h2><code>orederBy</code></h2>
+          <h2><code>orderBy</code></h2>
           <pre ng-non-bindable><code class="html" 
           style="font-size:.9em;padding: 12px; line-height: 18px;">&lt;div ng-controller="tasteController"&gt;
-  &lt;input ng-model="searchFilter"&gt;
+  &lt;input ng-model="selectedKeyOrder"&gt;
   &lt;table&gt;
     &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;SF Location&lt;/th&gt;&lt;/tr&gt;
-    &lt;tr ng-repeat="coffee in coffeeShops | filter:searchFilter"&gt;
+    &lt;tr ng-repeat="coffee in coffeeShops | orderBy:selectedKeyOrder"&gt;
       &lt;td&gt;{{ coffee.name }}&lt;/td&gt;
       &lt;td&gt;{{ coffee.sfLocation }}&lt;/td&gt;
     &lt;/tr&gt;
@@ -332,68 +340,93 @@
 &lt;/div&gt;</code></pre>
           <pre ng-non-bindable><code class="javascript" 
           style="font-size:.9em;padding: 12px; line-height: 18px;">.controller('tasteController', function($scope) {
-  $scope.coffeeShops = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
-                        { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
-                        { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }];
+  $scope.coffeeShops = [ { 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' }, ... ];
 });</code></pre>
           <div ng-init="coffeeShopsList = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]"></div>
          <input type="text" class="form-control" 
-         ng-model="searchFilter" placeholder="search">
+         ng-model="selectedKeyOrder" placeholder="Order By key">
           <table class="table table-condensed">
             <tr><th>Name</th><th>SF Location</th></tr>
-            <tr ng-repeat="coffee in coffeeShopsList | filter:searchFilter">
+            <tr ng-repeat="coffee in coffeeShopsList | orderBy:selectedKeyOrder">
               <td>{{ coffee.name }}</td>
               <td>{{ coffee.sfLocation }}</td>
             </tr>
           </table>
         </section>
+
 
         <section>
           <h3>Tasty lab three</h3>
           <p>Write a table that sort and filter a list of objects.<p>
           <p>Add a button that adds more objects to the list.</p>
-          <input type="text" class="form-control" 
-          ng-model="searchFilter" placeholder="search">
-          <button class="btn btn-default">Add new coffee shop!</button>
-          <table class="table table-condensed">
-            <tr><th>Name</th><th>SF Location</th></tr>
-            <tr ng-repeat="coffee in coffeeShopsList | filter:searchFilter">
-              <td>{{ coffee.name }}</td>
-              <td>{{ coffee.sfLocation }}</td>
-            </tr>
-          </table>
+          <div ng-controller="tasteController">
+            <input type="text" class="form-control" 
+            ng-model="searchFilter" placeholder="Insert word to filter">
+            <button class="btn btn-default" ng-click="addCoffeeShop()">Add new coffee shop!</button>
+            <table class="table table-condensed">
+              <tr>
+                <th ng-click="selectKeyToOrder('name')">Name</th>
+                <th ng-click="selectKeyToOrder('sfLocation')">SF Location</th>
+              </tr>
+              <tr ng-repeat="coffee in coffeeShopsList | orderBy:keyToOrder | filter:searchFilter">
+                <td>{{ coffee.name }}</td>
+                <td>{{ coffee.sfLocation }}</td>
+              </tr>
+            </table>
+          </div>
         </section>
+
 
         <section>
           <h3>Tasty lab three solution</h3>
           <pre ng-non-bindable><code class="html" 
-          style="font-size:.9em;padding: 12px; line-height: 18px;">&lt;div&gt;
-  &lt;input type="text" class="form-control" placeholder="search"&gt;
+          style="font-size:.8em;padding: 12px; line-height: 16px;">&lt;div ng-controller="tasteController"&gt;
+  &lt;input type="text" ng-model="searchFilter" placeholder="Insert word to filter"&gt;
+  &lt;button ng-click="addCoffeeShop()"&gt;Add new coffee shop!&lt;/button&gt;
   &lt;table&gt;
-    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;SF Location&lt;/th&gt;&lt;/tr&gt;
-    &lt;tr&gt;&lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th ng-click="selectKeyToOrder('name')"&gt;Name&lt;/th&gt;
+      &lt;th ng-click="selectKeyToOrder('sfLocation')"&gt;SF Location&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr ng-repeat="coffee in coffeeShops | orderBy:keyToOrder | filter:searchFilter"&gt;
+      &lt;td&gt;{{ coffee.name }}&lt;/td&gt;
+      &lt;td&gt;{{ coffee.sfLocation }}&lt;/td&gt;
+    &lt;/tr&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
           <pre ng-non-bindable><code class="javascript" 
-          style="font-size:.9em;padding: 12px; line-height: 18px;">.controller('tasteController', function($scope) {
+          style="font-size:.8em;padding: 12px; line-height: 16px;">.controller('tasteController', function($scope) {
   $scope.coffeeShops = [ ... ];
+  $scope.keyToOrder = '';
+  $scope.selectKeyToOrder = function (key) {
+    if ($scope.keyToOrder === key) {
+      $scope.keyToOrder = '-' + key;
+    } else {
+      $scope.keyToOrder = key;
+    }
+  };
+  $scope.addCoffeeShop = function () {
+    $scope.coffeeShopsList.push({ "name": "Contraband Coffee Bar", "sfLocation": "Nob Hill" })
+  };
 });</code></pre>
         </section>
+
 
         <section>
           <h2 class="slide-header"
           style="font-size:3em;margin-top: 50px">Services</h2>
         </section>
 
+
         <section>
           <h2><code>factory</code></h2>
           <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', []);
 .factory('coffee', function() {
-    return {
-      'listType': ['Espresso', 'Macchiato', 'Latte', 'Cappucino', 'Gibraltar']
-    };
+  return {
+    'listType': ['Espresso', 'Macchiato', 'Latte', 'Cappucino', 'Gibraltar']
+  };
 })
 .controller('tastyController', function($scope, coffee) {
   $scope.listOne = coffee.listType;
@@ -402,6 +435,7 @@
   $scope.listTwo = coffee.listType;
 }</code></pre>
         </section>
+
 
         <section>
           <h2><code>service</code></h2>
@@ -438,33 +472,6 @@
 .controller('tasteController', function($scope, $timeout) {
   $timeout(fn, [delay], [invokeApply]);
 });</code></pre>
-        </section>
-
-
-        <section>
-          <h3>Tasty lab four</h3>
-          <p>Write a factory that allows to call an external endpoint.</p>
-          <p>As response will back a list of coffeShops to show with ng-repeat</p>
-          <div ng-controller="tasteController">
-            <table class="table table-condensed">
-              <tr>
-                <th>Name</th>
-                <th>Stars</th>
-                <th>SF Location</th>
-              </tr>
-              <tr>
-                <td ng-bind="name"></td>
-                <td ng-bind="star"></td>
-                <td ng-bind="sfLocation"></td>
-              </tr>
-            </table>
-          </div>
-        </section>
-
-
-        <section>
-          <h3>Tasty lab four solution</h3>
-
         </section>
 
 
@@ -513,14 +520,29 @@
 
 
         <section>
-          <h3>Tasty lab five</h3>
-          <p>Write controller with a function called in every moment 
-            the varibale text changes.<p>
+          <h3>Tasty lab four</h3>
+          <p>Write controller that store the result of listItem inside a factory every moment 
+            the count is increment.<p>
+          <div class="row">
+            <div class="col-xs-6" ng-controller="tasteController">
+              <button class="btn btn-default" ng-click="incrementCounter()">Increment</button>
+              <br />
+              <ul>
+                <li ng-repeat="item in listItem" ng-bind="item"></li>
+              </ul>
+            </div>
+            <div class="col-xs-6" ng-controller="awesomeController">
+              <br />
+  
+              <ul>
+                <li ng-repeat="item in listMyItem" ng-bind="item"></li>
+            </div>
+          </div>
         </section>
 
 
         <section>
-          <h3>Tasty lab five solution</h3>
+          <h3>Tasty lab four solution</h3>
         </section>
 
 
@@ -564,14 +586,13 @@
 
 
         <section>
-          <h3>Tasty lab six</h3>
+          <h3>Tasty lab five</h3>
           <p>Write a single page app with an home and profile page.<p>
         </section>
 
 
         <section>
-          <h3>Tasty lab six solution</h3>
-          <p>Write a single page app with an home and profile page.<p>
+          <h3>Tasty lab five solution</h3>
         </section>
 
 
@@ -666,14 +687,18 @@
     <script src="js/zepto.min.js"></script>
     <script>
       angular.module('tasteAngulajs', ['ngTasty'])
-      .factory('coffeShops', function ($http) {
+      .factory('items', function () {
+        var listItem = [];
         return {
-          'get': function () {
-            //$http.get();
+          'get': function() {
+            return listItem;
+          },
+          'add': function (item) {
+            listItem.push(item);
           }
-        };
+        }
       })
-      .controller('tasteController', function($scope, coffeShops) {
+      .controller('tasteController', function($scope, items) {
         $scope.data = { 'placeholder': "Che c'è di nuovo?" };
 
         $scope.count = 0;
@@ -691,6 +716,37 @@
         };
 
         $scope.coffeeShops = ['Ritual Coffee', 'Blue Bottle', 'Philz', 'Coffee Bar'];
+
+        $scope.keyToOrder = '';
+
+        $scope.selectKeyToOrder = function (key) {
+          if ($scope.keyToOrder === key) {
+            $scope.keyToOrder = '-' + key;
+          } else {
+            $scope.keyToOrder = key;
+          }
+        };
+
+        $scope.addCoffeeShop = function () {
+          $scope.coffeeShopsList.push({ "name": "Contraband Coffee Bar", "sfLocation": "Nob Hill" })
+        };
+
+        $scope.listItem = items.get();
+        $scope.countTwo = 0;
+      
+        $scope.incrementCounter = function () {
+          $scope.countTwo += 1;
+        };
+        
+        $scope.addItemToList = function (count) {
+          items.add(count);
+        };
+
+        $scope.$watch('countTwo', function(newValue, oldValue) {
+          if (newValue !== oldValue) {
+            $scope.addItemToList(newValue);
+          }
+        })
 
         $scope.resource = {
           "header": [
@@ -712,8 +768,9 @@
             { "name": "Flywheel Coffee Roasters", "star": "★★★★★", "sf-location": "Upper Haight" }
           ]
         };
-
-        coffeShops.get();
+      })
+      .controller('awesomeController', function($scope, items) {
+        $scope.listMyItem = items.get();
       });
     </script>
   </body>
