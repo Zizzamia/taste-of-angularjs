@@ -45,11 +45,6 @@
         </section>
 
         <section>
-          <h2>Table of contents</h2>
-          <div id="table-of-contents"></div>
-        </section>
-
-        <section>
           <h2 class="slide-header">What is AngularJS?</h2>
           <blockquote style="line-height:1.2em">
             Angular is a Javavascript framework that lets you extend HTML's syntax
@@ -83,9 +78,7 @@
 
         <section>
           <h2 class="slide-header" 
-          style="font-size:3em;margin-top: 50px">Data Binding and Directives</h2>
-          <p>AngularJS lets you extend HTML vocabulary for your application.</p>
-          <p>Directives is a unique and powerful feature available only in Angular. Directives let you invent new HTML syntax, specific to your application.</p>
+          style="font-size:3em;margin-top: 50px">Directives <br /> & <br /> Data Binding</h2>
         </section>
 
         <section>
@@ -103,25 +96,47 @@
         </section>
 
         <section>
-          <h2><code>ngModel</code> <code>ngBind</code></h2>
+          <h2><code>ngBind</code></h2>
+          <pre ng-non-bindable><code class="html">&lt;div ng-init="text = 'me'"&gt;
+  &lt;p&gt;Message: &lt;span ng-bind="text"&gt;&lt;span&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <div ng-init="text = 'me'">
+            <p>Text: {{ text }}</p>
+          </div>
+        </section>
+
+        <section>
+          <h2><code>ngModel</code></h2>
           <pre ng-non-bindable><code class="html">&lt;input type="text" ng-model="text" /&gt;
-&lt;p&gt;Message: {{ text }}&lt;/p&gt;</code></pre>
+&lt;p&gt;Message: &lt;span ng-bind="text"&gt;&lt;span&gt;&lt;/p&gt;</code></pre>
           <br />
           <div class="form-inline">
-            <label>Text</label><input type="text" class="form-control" ng-model="text" />
+            <label>Text</label><input type="text" class="form-control" ng-model="text2" />
           </div>
           <br />
-          <p>Text: {{ text }}</p>
+          <p>Text: {{ text2 }}</p>
         </section>
 
         <section>
-          <h3>Angular lab</h3>
-          <p>Write a div with Bootstrap CSS class bind by the date.text model<p>
+          <h3>Tasty lab one</h3>
+          <p>Change the html to bind the class attribute<p>
+          <pre ng-non-bindable><code class="html">&lt;input type="text" ng-model="text" /&gt;
+&lt;div&gt;
+ Bootstrap component
+&lt;/div&gt;</code></pre>
+          <br />
+          <div class="form-inline">
+            <label>Text</label><input type="text" class="form-control" ng-model="data.text" />
+          </div>
+          <br />
+          <div class="{{ data.text }}">
+            Bootstrap component
+          </div>
         </section>
 
         <section>
-          <h3>Angular lab solution</h3>
-          <p>Write a div with Bootstrap CSS class bind by the date.text model<p>
+          <h3>Tasty lab one solution</h3>
+          <p>Change the html to bind the class attribute<p>
           <pre ng-non-bindable><code class="html">&lt;input type="text" ng-model="data.text" /&gt;
 &lt;div class="{{ data.text }}"&gt;
  Bootstrap component
@@ -137,13 +152,8 @@
         </section>
 
         <section>
-          <h2 class="slide-header"
-          style="font-size:3em;margin-top: 50px">Controllers</h2>
-          <p>Controllers are the behavior behind the DOM elements.</p>
-        </section>
-
-        <section>
           <h2><code>ngController</code></h2>
+          <p>Controllers are the behavior behind the DOM elements.</p>
           <pre ng-non-bindable><code class="html">&lt;div ng-controller="tasteController"&gt;
   &lt;input class="form-control" placeholder="{{ data.placeholder }}" /&gt;
 &lt;/div&gt;</code></pre>
@@ -162,7 +172,10 @@
 
         <section>
           <h2>Reusable Components</h2>
-          <p>We use directives to create reusable components. A component allows you to hide complex DOM structure, CSS, and behavior. This lets you focus either on what the application does or how the application looks separately.</p>
+          <p>We use directives to create reusable components.</p>
+          <p>A component allows you to hide complex DOM structure, CSS, and behavior.</p>
+          <p>This lets you focus either on what the application does <br />
+            or how the application looks separately.</p>
         </section>
 
         <section>
@@ -170,7 +183,7 @@
           <pre ng-non-bindable><code class="html">&lt;button ng-click="count = count + 1" ng-init="count = 0"&gt;Increment&lt;/button&gt;
 &lt;p&gt;count: {{count}}&lt;/p&gt;</code></pre>
           <div ng-controller="tasteController">
-            <button ng-click="count = count + 1" ng-init="count = 0">Increment</button>
+            <button class="btn btn-default" ng-click="count = count + 1" ng-init="count = 0">Increment</button>
             <p>count : {{ count }}</p>
           </div>
         </section>
@@ -180,9 +193,9 @@
           <pre ng-non-bindable><code class="html">&lt;button ng-click="showElement = true"&gt;show&lt;/button&gt;
 &lt;button ng-click="showElement = fale"&gt;hide&lt;/button&gt;
 &lt;p ng-show="showElement"&gt;Element&lt;/p&gt;</code></pre>
-          <button ng-click="showElement = true">show</button>
-          <button ng-click="showElement = false">hide</button>
-          <p ng-show="showElement">Element</p>
+          <button class="btn btn-default" ng-click="showElement = true">show</button>
+          <button class="btn btn-default" ng-click="showElement = false">hide</button><br />
+          <img src="img/tiramisu-logo.png" ng-show="showElement" style="border:0;box-shadow:none;" />
         </section>
 
         <section>
@@ -190,18 +203,21 @@
           <pre ng-non-bindable><code class="html">&lt;button ng-click="hideElement = true"&gt;show&lt;/button&gt;
 &lt;button ng-click="hideElement = fale"&gt;hide&lt;/button&gt;
 &lt;p ng-hide="hideElement"&gt;Element&lt;/p&gt;</code></pre>
-          <button ng-click="hideElement = true">hide</button>
-          <button ng-click="hideElement = false">show</button>
-          <p ng-hide="hideElement">Element</p>
+          <button class="btn btn-default" ng-click="hideElement = true">hide</button>
+          <button class="btn btn-default" ng-click="hideElement = false">show</button><br />
+          <img src="img/tiramisu-logo.png" ng-hide="hideElement" style="border:0;box-shadow:none;" />
         </section>
 
         <section>
-          <h3>Angular lab</h3>
+          <h3>Tasty lab two</h3>
           <p>Write a function inside your controller that allow to show and hide an element<p>
+          <pre ng-non-bindable><code class="html">&lt;button ng-click="show()"&gt;show&lt;/button&gt;
+&lt;button ng-click="hide()"&gt;hide&lt;/button&gt;
+&lt;div ng-show="showTiramisu"&gt;ciao&lt;/div&gt;</code></pre>
         </section>
 
         <section>
-          <h3>Angular lab solution</h3>
+          <h3>Tasty lab two solution</h3>
           <pre ng-non-bindable><code class="html">&lt;button ng-click="show()"&gt;show&lt;/button&gt;
 &lt;button ng-click="hide()"&gt;hide&lt;/button&gt;
 &lt;div ng-show="showTiramisu"&gt;ciao&lt;/div&gt;</code></pre>
@@ -216,9 +232,10 @@
   };
 });</code></pre>
           <div ng-controller="tasteController">
-            <button ng-click="show()">Show</button>
-            <button ng-click="hide()">Hide</button>
-            <p ng-show="showTiramisu">Element</p>
+            <button class="btn btn-default" ng-click="show()">Show</button>
+            <button class="btn btn-default" ng-click="hide()">Hide</button><br />
+            <img src="img/tiramisu-logo.png" ng-show="showTiramisu" 
+            style="border:0;box-shadow:none;height:80px;" />
           </div>
         </section>
 
@@ -242,38 +259,12 @@
         </section>
 
         <section>
-          <h2><code>filter</code></h2>
-          <pre ng-non-bindable><code class="html">&lt;div ng-init="coffeeShops = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
-                             { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
-                             { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]">&lt;/div&gt;
-Search: &lt;input ng-model="searchCoffeeShops"&gt;
-&lt;table&gt;
-  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;SF Location&lt;/th&gt;&lt;/tr&gt;
-  &lt;tr ng-repeat="coffee in coffeeShops | filter:searchCoffeeShops"&gt;
-    &lt;td&gt;{{ coffee.name }}&lt;/td&gt;
-    &lt;td&gt;{{ coffee.sfLocation }}&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-          <div ng-init="coffeeShops = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
-                             { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
-                             { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]"></div>
-          Search: <input ng-model="searchCoffeeShops">
-          <table class="table">
-            <tr><th>Name</th><th>SF Location</th></tr>
-            <tr ng-repeat="coffee in coffeeShops | filter:searchCoffeeShops">
-              <td>{{ coffee.name }}</td>
-              <td>{{ coffee.sfLocation }}</td>
-            </tr>
-          </table>
-        </section>
-
-        <section>
           <h2><code>currency</code></h2>
           <pre ng-non-bindable><code class="html">&lt;input type="number" ng-model="amount" ng-init="amount = 1234.56"&gt;
 &lt;span&gt;{{ amount | currency }}&lt;/span&gt;
 &lt;span&gt;{{ amount | currency:"USD$" }}&lt;/span&gt;</code></pre>
         <div>
-  <input type="number" ng-model="amount" ng-init="amount = 1234.56"><br />
+  <input type="number" class="form-control" ng-model="amount" ng-init="amount = 1234.56"><br />
   <span>{{ amount | currency }}</span><br />
   <span>{{ amount | currency:"USD$" }}</span>
 </div>
@@ -290,6 +281,32 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
         </section>
 
         <section>
+          <h2><code>filter</code></h2>
+          <pre ng-non-bindable><code class="html">&lt;div ng-init="coffeeShops = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
+                             { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
+                             { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]">&lt;/div&gt;
+Search: &lt;input ng-model="searchCoffeeShops"&gt;
+&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;SF Location&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr ng-repeat="coffee in coffeeShops | filter:searchCoffeeShops"&gt;
+    &lt;td&gt;{{ coffee.name }}&lt;/td&gt;
+    &lt;td&gt;{{ coffee.sfLocation }}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+          <div ng-init="coffeeShopsList = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
+                             { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
+                             { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]"></div>
+         <input class="form-control" ng-model="searchCoffeeShops" placeholder="search">
+          <table class="table">
+            <tr><th>Name</th><th>SF Location</th></tr>
+            <tr ng-repeat="coffee in coffeeShopsList | filter:searchCoffeeShops">
+              <td>{{ coffee.name }}</td>
+              <td>{{ coffee.sfLocation }}</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
           <h2><code>orderBy</code></h2>
           <pre ng-non-bindable><code class="html">&lt;div ng-init="coffeeShops = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
@@ -302,10 +319,10 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
     &lt;td&gt;{{ coffee.sfLocation }}&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
-          <div ng-init="coffeeShops = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
+          <div ng-init="coffeeShopsList = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]"></div>
-          Search: <input ng-model="searchCoffeeShops">
+          Search: <input class="form-control" ng-model="searchCoffeeShops">
           <table class="table">
             <tr><th>Name</th><th>SF Location</th></tr>
             <tr ng-repeat="coffee in coffeeShops | filter:searchCoffeeShops">
@@ -316,12 +333,13 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
         </section>
 
         <section>
-          <h3>Angular lab</h3>
-          <p>Write a table that allow to sorting and filter a list of object.<p>
+          <h3>Tasty lab three</h3>
+          <p>Write a table that to sort and filter a list of objects.<p>
+          <p>Add a button that adds more objects to the list.</p>
         </section>
 
         <section>
-          <h3>Angular lab solution</h3>
+          <h3>Tasty lab three solution</h3>
           <p>Write a table that allow to sorting and filter a list of object.<p>
         </section>
 
@@ -371,17 +389,6 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
         </section>
 
         <section>
-          <h2><code>$parse</code></h2>
-          <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])
-.controller('tasteController', function($scope, $parse) {
-  var getter = $parse('user.name');
-  var setter = getter.assign;
-  var context = {user:{name:'angular'}};
-  var locals = {user:{name:'local'}};
-});</code></pre>
-        </section>
-
-        <section>
           <h2><code>$timeout</code></h2>
           <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])
 .controller('tasteController', function($scope, $timeout) {
@@ -390,39 +397,60 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
         </section>
 
         <section>
+          <h3>Tasty lab four</h3>
+          <p>Write a factory that allows two controllers to share the same function.</p>
+        </section>
+
+        <section>
+          <h3>Tasty lab four solution</h3>
+        </section>
+
+        <section>
           <h2 class="slide-header"
           style="font-size:3em;margin-top: 50px">$rootScope</h2>
         </section>
 
         <section>
-          <h2><code>$rootScope</code></h2>
-          <pre ng-non-bindable><code class="javascript"></code></pre>
-        </section>
-
-        <section>
-          <h2><code>$scope</code></h2>
-          <pre ng-non-bindable><code class="javascript"></code></pre>
+          <h2><code>$rootScope</code> & <code>$scope</code></h2>
+          <pre ng-non-bindable><code class="javascript">.controller("tasteController", function ($rootScope, $scope) {
+  $scope.variable = 3;
+});
+</code></pre>
+          <p>Every application has a single root scope.</p>
+          <p>All other scopes are descendant scopes of the root scope.</p>
+          <p>$scope is an object that refers to the application model.</p>
         </section>
 
         <section>
           <h2><code>$digest</code> vs <code>$apply</code></h2>
-          <pre ng-non-bindable><code class="javascript"></code></pre>
+          <pre ng-non-bindable><code class="javascript">.controller("tasteController", function ($scope) {
+  $scope.$digest();
+});
+</code></pre>
+          <pre ng-non-bindable><code class="javascript">.controller("tasteController", function ($scope) {
+  $scope.$apply();
+});
+</code></pre>
         </section>
 
         <section>
           <h2><code>$watch</code></h2>
-          <pre ng-non-bindable><code class="javascript"></code></pre>
+          <p>Scopes provide APIs ($watch) to observe model mutations.</p>
+          <pre ng-non-bindable><code class="javascript">.controller("tasteController", function ($scope) {
+  $scope.$watch('name', function(newValue, oldValue) {
+    $scope.myCallback(newValue);
+  });
+});
+</code></pre>
         </section>
 
         <section>
-          <h3>Angular lab</h3>
-          <p>Write a factory that allow two controller two share the same function.
-          That function should allow to update a $scope variable inside your controller.
-          All the time that variable is changed you should call a callback that do something else.<p>
+          <h3>Tasty lab five</h3>
+          <p>Write controller with a function called in every moment the varibal text changes.<p>
         </section>
 
         <section>
-          <h3>Angular lab solution</h3>
+          <h3>Tasty lab five solution</h3>
         </section>
 
         <section>
@@ -431,72 +459,44 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
 
         <section>
           <h2><code>$route</code></h2>
-          <pre ng-non-bindable><code class="javascript"></code></pre>
+          <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', []);
+.config(function($routeProvider) {
+  $routeProvider.
+    when('/home', {
+      templateUrl: 'templates/home.html',
+      controller: 'HomeController'
+    }).
+    when('/link2', {
+      templateUrl: 'templates/link2.html',
+      controller: 'Link2Controller'
+    }).
+    otherwise({
+      redirectTo: '/home'
+    });
+});</code></pre>
         </section>
 
         <section>
           <h2><code>ngView</code></h2>
-          <pre ng-non-bindable><code class="javascript"></code></pre>
+          <pre ng-non-bindable><code class="html">&lt;html&gt;
+&lt;body&gt;
+  &lt;header&gt;&lt;/header&gt;
+
+  &lt;div ng-view&gt;&lt;/div&gt;
+
+  &lt;footer&gt;&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         </section>
 
         <section>
-          <h3>Angular lab</h3>
+          <h3>Tasty lab six</h3>
           <p>Write a single page app with an home and profile page.<p>
         </section>
 
         <section>
-          <h2 class="slide-header"
-          style="font-size:3em;margin-top: 50px">Modules</h2>
-          <p>Interface for configuring angular modules</p>
-          <ul>
-            <li>provider</li>
-            <li>factory</li>
-            <li>service</li>
-            <li>value</li>
-            <li>constant</li>
-            <li>animation</li>
-            <li>filter</li>
-            <li>controller</li>
-            <li>directive</li>
-            <li>config</li>
-            <li>run</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Angular lab</h3>
-          <p>Write a to do<p>
-        </section>
-
-        <section>
-          <h3>Angular lab solution</h3>
-          <pre ng-non-bindable><code class="javascript">angular.module('todoApp', [])
-  .controller('TodoController', ['$scope', function($scope) {
-    $scope.todos = [
-      {text:'learn angular', done:true},
-      {text:'build an angular app', done:false}];
- 
-    $scope.addTodo = function() {
-      $scope.todos.push({text:$scope.todoText, done:false});
-      $scope.todoText = '';
-    };
- 
-    $scope.remaining = function() {
-      var count = 0;
-      angular.forEach($scope.todos, function(todo) {
-        count += todo.done ? 0 : 1;
-      });
-      return count;
-    };
- 
-    $scope.archive = function() {
-      var oldTodos = $scope.todos;
-      $scope.todos = [];
-      angular.forEach(oldTodos, function(todo) {
-        if (!todo.done) $scope.todos.push(todo);
-      });
-    };
-  }]);</code></pre>
+          <h3>Tasty lab six solution</h3>
+          <p>Write a single page app with an home and profile page.<p>
         </section>
 
         <section>
@@ -508,63 +508,11 @@ Search: &lt;input ng-model="searchCoffeeShops"&gt;
         </section>
 
         <section>
-          <h3>#ngTasty simple table</h3>
-          <pre ng-non-bindable><code class="html" style="font-size: 0.8.4em;
-padding: 10px; line-height: 16px;">&lt;script src="bower_components/ng-tasty/ng-tasty-tpls.min.js"&gt;&lt;/script&gt;
-&lt;div tasty-table resource="resource"&gt;
-  &lt;table class="table table-striped table-condensed"&gt;
-    &lt;thead tasty-thead&gt;&lt;/thead&gt;
-    &lt;tbody&gt;
-      &lt;tr ng-repeat="row in rows"&gt;
-        &lt;td&gt;{{ row.name }}&lt;/td&gt;
-        &lt;td&gt;{{ row.star }}&lt;/td&gt;
-        &lt;td&gt;{{ row.sfLocation }}&lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-  &lt;div tasty-pagination>&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-          <pre ng-non-bindable><code class="javascript" style="font-size: 0.8.4em;
-padding: 10px; line-height: 16px;">angular.module('tasteAngulajs', ['ngTasty'])
-.controller('tasteController', function($scope) {
-  $scope.resource = {
-    "header": [
-      { "key": "name", "name": "Name" },
-      { "key": "star", "name": "star" },
-      { "key": "sfLocation", "name": "SF Location" }
-    ],
-    "rows": [
-      { "name": "Ritual Coffee Roasters", "star": "★★★★★", "sf-location": "Hayes Valley"},
-      ...
-      { "name": "Flywheel Coffee Roasters", "star": "★★★★★", "sf-location": "Upper Haight" }
-    ]
-  };
-});</code></pre>
-        </section>
-
-        <section ng-controller="tasteController">
-          <h3>#ngTasty simple table</h3>
-          <div tasty-table resource="resource">
-            <table class="table table-striped table-condensed">
-              <thead tasty-thead></thead>
-              <tbody>
-                <tr ng-repeat="row in rows">
-                  <td>{{ row.name }}</td>
-                  <td>{{ row.star }}</td>
-                  <td>{{ row.sfLocation }}</td>
-                </tr>
-              </tbody>
-            </table>
-            <div tasty-pagination></div>
-          </div>
-        </section>
-
-        <section>
           <h2 class="slide-header">Learning Resources</h2>
           <ul>
             <li>
-              <a href="https://github.com/Zizzamia/taste-of-angularjs" target="_blank">
-                github.com/Zizzamia/taste-of-angularjs
+              <a href="http://zizzamia.github.io/taste-of-angularjs/" target="_blank">
+                zizzamia.github.io/taste-of-angularjs
               </a>
             </li>
             <li>
@@ -574,11 +522,6 @@ padding: 10px; line-height: 16px;">angular.module('tasteAngulajs', ['ngTasty'])
             </li>
             <li>
               <a href="https://egghead.io/technologies/angularjs?order=ASC" target="_blank">
-                egghead.io
-              </a>
-            </li>
-            <li>
-              <a href="https://egghead.io" target="_blank">
                 egghead.io
               </a>
             </li>
