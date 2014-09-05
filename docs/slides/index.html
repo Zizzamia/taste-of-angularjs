@@ -413,6 +413,7 @@
 })</code></pre>
         </section>
 
+
         <section>
           <h2><code>$http</code></h2>
           <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])
@@ -430,6 +431,7 @@
 });</code></pre>
         </section>
 
+
         <section>
           <h2><code>$timeout</code></h2>
           <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])
@@ -438,20 +440,39 @@
 });</code></pre>
         </section>
 
+
         <section>
           <h3>Tasty lab four</h3>
           <p>Write a factory that allows to call an external endpoint.</p>
           <p>As response will back a list of coffeShops to show with ng-repeat</p>
+          <div ng-controller="tasteController">
+            <table class="table table-condensed">
+              <tr>
+                <th>Name</th>
+                <th>Stars</th>
+                <th>SF Location</th>
+              </tr>
+              <tr>
+                <td ng-bind="name"></td>
+                <td ng-bind="star"></td>
+                <td ng-bind="sfLocation"></td>
+              </tr>
+            </table>
+          </div>
         </section>
+
 
         <section>
           <h3>Tasty lab four solution</h3>
+
         </section>
+
 
         <section>
           <h2 class="slide-header"
           style="font-size:3em;margin-top: 50px">$rootScope</h2>
         </section>
+
 
         <section>
           <h2><code>$rootScope</code> & <code>$scope</code></h2>
@@ -465,6 +486,7 @@
           <p>$scope is an object that refers to the application model.</p>
         </section>
 
+
         <section>
           <h2><code>$digest</code> vs <code>$apply</code></h2>
           <pre ng-non-bindable><code class="javascript">.controller("tasteController", function ($scope) {
@@ -477,6 +499,7 @@
 </code></pre>
         </section>
 
+
         <section>
           <h2><code>$watch</code></h2>
           <p>Scopes provide APIs ($watch) to observe model mutations.</p>
@@ -488,19 +511,23 @@
 </code></pre>
         </section>
 
+
         <section>
           <h3>Tasty lab five</h3>
           <p>Write controller with a function called in every moment 
             the varibale text changes.<p>
         </section>
 
+
         <section>
           <h3>Tasty lab five solution</h3>
         </section>
 
+
         <section>
           <h2 class="slide-header">Routes</h2>
         </section>
+
 
         <section>
           <h2><code>$route</code></h2>
@@ -521,6 +548,7 @@
 });</code></pre>
         </section>
 
+
         <section>
           <h2><code>ngView</code></h2>
           <pre ng-non-bindable><code class="html">&lt;html&gt;
@@ -534,15 +562,18 @@
 &lt;/html&gt;</code></pre>
         </section>
 
+
         <section>
           <h3>Tasty lab six</h3>
           <p>Write a single page app with an home and profile page.<p>
         </section>
 
+
         <section>
           <h3>Tasty lab six solution</h3>
           <p>Write a single page app with an home and profile page.<p>
         </section>
+
 
         <section>
           <h2 class="slide-header"
@@ -553,6 +584,7 @@
           <p>A lightweight, flexible, and tasty collection of reusable UI 
             components for AngularJS, like grandma used to make.</p>
         </section>
+
 
         <section>
           <h2 class="slide-header">Learning Resources</h2>
@@ -580,11 +612,13 @@
           </ul>
         </section>
 
+
         <section>
           <img src="img/angularjs-logo.png" height="300" style="border:none;box-shadow:none" />
           <h3 style="font-size:1.7em;margin-bottom:2em">Remember, 
           with great power, comes great responsibility.</h3>
         </section>
+
 
         <section>
           <h3 style="font-size:3em;margin-top:30px;margin-bottom:.5em">Thank you :)</h3>
@@ -631,26 +665,15 @@
     <script src="bower_components/ng-tasty/ng-tasty-tpls.min.js"></script>
     <script src="js/zepto.min.js"></script>
     <script>
-      Zepto(function($){
-        var tableOfContents = $('#table-of-contents');
-        var tableList = $('<ol />');
-        $('.slide-header').each(function(index){
-          var _self = $(this),
-              hash = '#/' + _self.closest('section').index();
-          tableList.append([ 
-            '<li>',
-              '<a href="' + hash + '">',
-                _self.text(),
-              '</a>',
-            '</li>'
-          ].join(''));
-        });
-        tableOfContents.html( tableList );
-      });
-    </script>
-    <script>
       angular.module('tasteAngulajs', ['ngTasty'])
-      .controller('tasteController', function($scope) {
+      .factory('coffeShops', function ($http) {
+        return {
+          'get': function () {
+            //$http.get();
+          }
+        };
+      })
+      .controller('tasteController', function($scope, coffeShops) {
         $scope.data = { 'placeholder': "Che c'è di nuovo?" };
 
         $scope.count = 0;
@@ -689,6 +712,8 @@
             { "name": "Flywheel Coffee Roasters", "star": "★★★★★", "sf-location": "Upper Haight" }
           ]
         };
+
+        coffeShops.get();
       });
     </script>
   </body>
