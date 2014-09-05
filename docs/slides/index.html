@@ -533,9 +533,9 @@
             </div>
             <div class="col-xs-6" ng-controller="awesomeController">
               <br />
-  
               <ul>
                 <li ng-repeat="item in listMyItem" ng-bind="item"></li>
+              </ul>
             </div>
           </div>
         </section>
@@ -737,7 +737,7 @@
         $scope.incrementCounter = function () {
           $scope.countTwo += 1;
         };
-        
+
         $scope.addItemToList = function (count) {
           items.add(count);
         };
