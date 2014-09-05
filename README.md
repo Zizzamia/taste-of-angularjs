@@ -1,19 +1,18 @@
 Taste of AngularJS: Javascript framework for superheroes
 
 <table>
-<tr>
-<td>
-<a href="http://zizzamia.github.io/taste-of-angularjs/slides/">
-  <img src="https://raw.githubusercontent.com/zizzamia/taste-of-angularjs/master/assets/angularjs-logo.png" alt="AngularJS Logo" />
-</a>
-</td>
-
-<td>
-<h3>Slides available online: <br>
-<a href="http://zizzamia.github.io/taste-of-angularjs/slides/">A Taste of AngularJS: Javascript framework for superheroes</a>
-</h3>
-</td>
-</tr>
+  <tr>
+    <td>
+      <a href="http://zizzamia.github.io/taste-of-angularjs/slides/">
+        <img src="https://raw.githubusercontent.com/zizzamia/taste-of-angularjs/master/assets/angularjs-logo.png" alt="AngularJS Logo" />
+      </a>
+    </td>
+    <td>
+      <h3>Slides available online: <br>
+      <a href="http://zizzamia.github.io/taste-of-angularjs/">A Taste of AngularJS: Javascript framework for superheroes</a>
+      </h3>
+    </td>
+  </tr>
 </table>
 
 > If you are looking for the official documentation, you can find it here: [https://angularjs.org/](https://angularjs.org/).
