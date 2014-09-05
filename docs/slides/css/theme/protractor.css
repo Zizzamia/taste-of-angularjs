@@ -190,3 +190,8 @@ body {
 	font-size: 18px;
 	line-height: 1.3em;
 }
+
+.reveal li {
+  margin-bottom: .4em;
+  line-height: 1.4em;
+}
