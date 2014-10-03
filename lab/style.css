@@ -1,0 +1,171 @@
+/* =============================================================================
+Main layout style
+============================================================================= */
+html {
+  position: relative;
+}
+
+body {
+  background-color: white;
+  color: #5d6565;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: left;
+  background-image: url(https://abs.twimg.com/images/themes/theme1/bg.png);
+  background-position: left 40px;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-color: #C0DEED;
+}
+
+.content {
+  margin: 50px auto 0;
+  padding: 0;
+  width: 600px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+
+.content-two {
+  padding: 15px;
+}
+
+/* =============================================================================
+Typography style
+============================================================================= */
+p {
+  margin: 0 0 9px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* =============================================================================
+Header style
+============================================================================= */
+header {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
+header nav {
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  height: 40px;
+  position: relative;
+  width: 100%;
+  background: #fff;
+}
+nav .inner {
+  max-width: 600px;
+  text-align: center;
+  width: auto;
+  margin: 0 auto;
+}
+nav .inner img {
+  margin: 8px auto;
+}
+
+/* =============================================================================
+Footer style
+============================================================================= */
+footer {
+  border-top: 4px double #fff;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  width: 600px;
+}
+footer p {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+/* =============================================================================
+Home style
+============================================================================= */
+.home h1 {
+  color: #7E96A2;
+}
+.timeline .tweet {
+  position: relative;
+  min-height: 71px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #e1e8ed;
+}
+.timeline .tweet-content {
+  cursor: pointer;
+  margin-left: 58px;
+}
+.timeline .tweet img {
+  float: left;
+  margin-top: 3px;
+  margin-left: -58px;
+  width: 42px;
+  height: 42px;
+  border-radius: 5px;
+}
+.timeline .tweet p {
+  font-size: 16px;
+  text-align: left;
+}
+.timeline .tweet .header {
+  display: block;
+  font-weight: bold;
+  color: #292f33;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+}
+.timeline .tweet  .time {
+  font-size: 12px;
+  color: #8899a6;
+}
+.timeline button {
+  float: right;
+}
+.time h4 {
+  display: inline-block;
+  width: 49%;
+  margin: 20px 0;
+}
+.blue {
+  color: orange;
+}
+
+.timeline-tweet-box {
+  border-radius: 5px 5px 0 0;
+  border: 1px solid #BFE0EC;
+  position: relative;
+}
+.home-tweet-box {
+  background-color: #E5F2F7;
+  padding: 10px 12px;
+}
+.home-tweet-box img {
+  left: 28px;
+  position: absolute;
+  top: 13px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+.home-tweet-box textarea,
+.home-tweet-box input {
+  color: #0084B4;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-color: rgba(0,132,180,0.25);
+  width: 500px;
+  margin-left: 60px;
+}
+
+
+.reveal pre code {
+  padding: 16px;
+  background: #3F3F3F;
+  border: none;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="ng-tasty-tpls.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="container" ng-controller="tasteController">
+
+  <header>
+    <nav>
+      <div class="inner">
+        <img src="../assets/twitter_logo_blue.png" height="20" />
+      </div>
+    </nav>
+  </header>
+  
+  <div class="content content-two">
+    <input type="text" class="form-control" />
+    <br />
+    <div>
+      Bootstrap component
+    </div>
+  </div>
+
+  <!--
+  <div class="content">
+    <div class="timeline-tweet-box">
+      <div class="home-tweet-box">
+        <img src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
+        <div ng-hide="isOpenBox">
+          <input class="form-control" />
+        </div>
+        <div>
+          <textarea ng-model="tweet.text" class="form-control" rows="3"></textarea>
+          <button type="button" class="btn btn-info btn-sm">Tweet</button>
+        </div>
+      </div>
+    </div>
+    <div class="list-group timeline">
+      <div class="tweet">
+        <div class="tweet-content">
+          <img src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
+          <div class="header">
+           {{ tweet.username }}
+           <i class="time">{{ tweet.timestamp }}</i>
+          </div>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!--
+  <div class="content">
+    <input type="text" class="form-control" placeholder="Insert word to filter">
+    <table class="table table-condensed">
+      <tr>
+        <th>Name</th>
+        <th>SF Location</th>
+      </tr>
+      <tr>
+        <td>{{ coffee.name }}</td>
+        <td>{{ coffee.sfLocation }}</td>
+      </tr>
+    </table>
+  </div>
+  -->
+
+  <footer>
+    <p>
+      A tasty beginning Web Dev with 
+      <a href="http://angularjs.org/" target="_blank">AngularJS</a> by 
+      <a href="https://twitter.com/zizzamia" target="_blank">@zizzamia</a>
+    </p>
+    <code>ng-app</code> <code>ng-init</code> <code>ng-bind</code>
+    <code>ng-model</code> <code>ng-controller</code> <code>ng-click</code>
+    <code>ng-show</code> <code>ng-hide</code> <code>ng-repeat</code>
+    <code>date</code> <code>filter</code> <code>orderBy</code>
+    <code>factory</code>
+  </footer>
+          
+  <script>
+    var username = 'lzizzamia';
+    var listTweets = [
+      { 'username': username, 'text': 'Ciao', 'timestamp': 1410474730056 },
+      { 'username': username, 'text': 'Ciao due', 'timestamp': 1410474617870 }
+    ];
+    var data = { 'placeholder': "Che c'e' di nuovo?" };
+    var coffeeShopsList = [
+      { 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
+      { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
+      { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }
+    ];
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="tasteAngulajs">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="ng-tasty-tpls.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="container" ng-controller="tasteController">
+
+  <header>
+    <nav>
+      <div class="inner">
+        <img src="../assets/twitter_logo_blue.png" height="20" />
+      </div>
+    </nav>
+  </header>
+
+  <!--
+  <div class="content content-two">
+    <input type="text" class="form-control" ng-model="className" />
+    <br />
+    <div ng-class="className">
+      Bootstrap component
+    </div>
+  </div>
+  -->
+
+  <div class="content">
+    <div class="timeline-tweet-box">
+      <div class="home-tweet-box">
+        <img src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
+        <div ng-hide="isOpenBox" ng-click="openBox()">
+          <input class="form-control" placeholder="{{ data.placeholder }}" />
+        </div>
+        <div ng-show="isOpenBox">
+          <textarea ng-model="tweet.text" class="form-control" rows="3"></textarea>
+          <button type="button" class="btn btn-info btn-sm" 
+          ng-click="writeTweet()">Tweet</button>
+        </div>
+      </div>
+    </div>
+    <div class="list-group timeline">
+      <div class="tweet" ng-repeat="tweet in listTweets">
+        <div class="tweet-content">
+          <img src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
+          <div class="header">
+           {{ tweet.username }}
+           <i class="time">{{ tweet.timestamp | date }}</i>
+          </div>
+          <p ng-bind="tweet.text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  <div class="content">
+    <input type="text" class="form-control" 
+    ng-model="searchFilter" placeholder="Insert word to filter">
+    <table class="table table-condensed">
+      <tr>
+        <th ng-click="selectKeyToOrder('name')">Name</th>
+        <th ng-click="selectKeyToOrder('sfLocation')">SF Location</th>
+      </tr>
+      <tr ng-repeat="coffee in coffeeShopsList | orderBy:keyToOrder | filter:searchFilter">
+        <td>{{ coffee.name }}</td>
+        <td>{{ coffee.sfLocation }}</td>
+      </tr>
+    </table>
+  </div>
+  -->
+
+  <footer>
+    <p>
+      A tasty beginning Web Dev with 
+      <a href="http://angularjs.org/" target="_blank">AngularJS</a> by 
+      <a href="https://twitter.com/zizzamia" target="_blank">@zizzamia</a>
+    </p>
+    <code>ng-app</code> <code>ng-init</code> <code>ng-bind</code>
+    <code>ng-model</code> <code>ng-controller</code> <code>ng-click</code>
+    <code>ng-show</code> <code>ng-hide</code> <code>ng-repeat</code>
+    <code>date</code> <code>filter</code> <code>orderBy</code>
+    <code>factory</code>
+  </footer>
+          
+  <script>
+    angular.module('tasteAngulajs', ['ngTasty'])
+      .factory('tweets', function () {
+        var username = 'lzizzamia';
+        var listTweets = [
+          { 'username': username, 'text': 'Ciao', 'timestamp': 1410474730056 },
+          { 'username': username, 'text': 'Ciao due', 'timestamp': 1410474617870 }
+        ];
+        return {
+          'get': function () {
+            return listTweets;
+          },
+          'create': function (text) {
+            var tweet = {
+              'username': username,
+              'text': text,
+              'timestamp': Date.now()
+            };
+            listTweets.splice(0, 0, tweet);
+          }
+        };
+      })
+      .controller('tasteController', function($scope, tweets) {
+        $scope.data = { 'placeholder': "Che c'e' di nuovo?" };
+        $scope.isOpenBox = false;
+        $scope.tweet = {
+          'text': '',
+        } 
+
+        $scope.openBox = function () {
+          $scope.isOpenBox = true;
+        };
+        $scope.listTweets = tweets.get();
+
+        $scope.writeTweet = function () {
+          tweets.create($scope.tweet.text);
+          $scope.tweet.text = '';
+        };
+
+        $scope.coffeeShopsList = [
+          { 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
+          { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
+          { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }
+        ];
+
+        $scope.selectKeyToOrder = function (key) {
+          if ($scope.keyToOrder === key) {
+            $scope.keyToOrder = '-' + key;
+          } else {
+            $scope.keyToOrder = key;
+          }
+        };
+      })
+  </script>
+</body>
+</html>

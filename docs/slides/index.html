@@ -140,15 +140,6 @@
 
 
         <section>
-          <h3>Tasty lab one solution</h3>
-          <pre ng-non-bindable><code class="html">&lt;input type="text" ng-model="className" /&gt;
-&lt;div ng-class="className"&gt;
- Bootstrap component
-&lt;/div&gt;</code></pre>
-        </section>
-
-
-        <section>
           <h2><code>ngController</code></h2>
           <p>Controllers are the behavior behind the DOM elements.</p>
           <pre ng-non-bindable><code class="html">&lt;div ng-controller="tasteController"&gt;
@@ -165,15 +156,6 @@
             src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
             <input class="form-control" style="display:inline-block; width:60%; vertical-align: bottom;" placeholder="{{ data.placeholder }}" />
           </div>
-        </section>
-
-
-        <section>
-          <h2>Reusable Components</h2>
-          <p>We use directives to create reusable components.</p>
-          <p>A component allows you to hide complex DOM structure, CSS, and behavior.</p>
-          <p>This lets you focus either on what the application does <br />
-            or how the application looks separately.</p>
         </section>
 
 
@@ -199,7 +181,7 @@
         <section>
           <h2><code>ngShow</code></h2>
           <pre ng-non-bindable><code class="html">&lt;button ng-click="showTiramisu = true"&gt;show&lt;/button&gt;
-&lt;button ng-click="showTiramisu = fale"&gt;hide&lt;/button&gt;
+&lt;button ng-click="showTiramisu = false"&gt;hide&lt;/button&gt;
 &lt;img src="img/tiramisu-logo.png" ng-show="showTiramisu" /&gt;</code></pre>
           <button class="btn btn-default" ng-click="showTiramisu = true">show</button>
           <button class="btn btn-default" ng-click="showTiramisu = false">hide</button><br />
@@ -210,7 +192,7 @@
         <section>
           <h2><code>ngHide</code></h2>
           <pre ng-non-bindable><code class="html">&lt;button ng-click="hideTiramisu = true"&gt;show&lt;/button&gt;
-&lt;button ng-click="hideTiramisu = fale"&gt;hide&lt;/button&gt;
+&lt;button ng-click="hideTiramisu = false"&gt;hide&lt;/button&gt;
 &lt;img src="img/tiramisu-logo.png" ng-show="hideTiramisu" /&gt;</code></pre>
           <button class="btn btn-default" ng-click="hideTiramisu = true">hide</button>
           <button class="btn btn-default" ng-click="hideTiramisu = false">show</button><br />
@@ -227,26 +209,6 @@
             <img src="img/tiramisu-logo.png" ng-show="showTiramisu" 
             style="border:0;box-shadow:none;" />
           </div>
-        </section>
-
-
-        <section>
-          <h3>Tasty lab two solution</h3>
-          <pre ng-non-bindable><code class="html">&lt;div ng-controller="tasteController"&gt;
-  &lt;button ng-click="show()"&gt;show&lt;/button&gt;
-  &lt;button ng-click="hide()"&gt;hide&lt;/button&gt;
-  &lt;img src="tiramisu-logo.png" ng-show="showTiramisu" /&gt;
-&lt;div&gt;</code></pre>
-          <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])
-.controller('tasteController', function($scope) {
-  $scope.showTiramisu = true;
-  $scope.show = function () {
-    $scope.showTiramisu = true;
-  };
-  $scope.hide = function () {
-    $scope.showTiramisu = false;
-  };
-});</code></pre>
         </section>
 
 
@@ -360,11 +322,9 @@
         <section>
           <h3>Tasty lab three</h3>
           <p>Write a table that sort and filter a list of objects.<p>
-          <p>Add a button that adds more objects to the list.</p>
           <div ng-controller="tasteController">
             <input type="text" class="form-control" 
             ng-model="searchFilter" placeholder="Insert word to filter">
-            <button class="btn btn-default" ng-click="addCoffeeShop()">Add new coffee shop!</button>
             <table class="table table-condensed">
               <tr>
                 <th ng-click="selectKeyToOrder('name')">Name</th>
@@ -376,41 +336,6 @@
               </tr>
             </table>
           </div>
-        </section>
-
-
-        <section>
-          <h3>Tasty lab three solution</h3>
-          <pre ng-non-bindable><code class="html" 
-          style="font-size:.8em;padding: 12px; line-height: 16px;">&lt;div ng-controller="tasteController"&gt;
-  &lt;input type="text" ng-model="searchFilter" placeholder="Insert word to filter"&gt;
-  &lt;button ng-click="addCoffeeShop()"&gt;Add new coffee shop!&lt;/button&gt;
-  &lt;table&gt;
-    &lt;tr&gt;
-      &lt;th ng-click="selectKeyToOrder('name')"&gt;Name&lt;/th&gt;
-      &lt;th ng-click="selectKeyToOrder('sfLocation')"&gt;SF Location&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr ng-repeat="coffee in coffeeShops | orderBy:keyToOrder | filter:searchFilter"&gt;
-      &lt;td&gt;{{ coffee.name }}&lt;/td&gt;
-      &lt;td&gt;{{ coffee.sfLocation }}&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/table&gt;
-&lt;/div&gt;</code></pre>
-          <pre ng-non-bindable><code class="javascript" 
-          style="font-size:.8em;padding: 12px; line-height: 16px;">.controller('tasteController', function($scope) {
-  $scope.coffeeShops = [ ... ];
-  $scope.keyToOrder = '';
-  $scope.selectKeyToOrder = function (key) {
-    if ($scope.keyToOrder === key) {
-      $scope.keyToOrder = '-' + key;
-    } else {
-      $scope.keyToOrder = key;
-    }
-  };
-  $scope.addCoffeeShop = function () {
-    $scope.coffeeShopsList.push({ "name": "Contraband Coffee Bar", "sfLocation": "Nob Hill" })
-  };
-});</code></pre>
         </section>
 
 
@@ -521,28 +446,7 @@
 
         <section>
           <h3>Tasty lab four</h3>
-          <p>Write controller that store the result of listItem inside a factory every moment 
-            the count is increment.<p>
-          <div class="row">
-            <div class="col-xs-6" ng-controller="tasteController">
-              <button class="btn btn-default" ng-click="incrementCounter()">Increment</button>
-              <br />
-              <ul>
-                <li ng-repeat="item in listItem" ng-bind="item"></li>
-              </ul>
-            </div>
-            <div class="col-xs-6" ng-controller="awesomeController">
-              <br />
-              <ul>
-                <li ng-repeat="item in listMyItem" ng-bind="item"></li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-
-        <section>
-          <h3>Tasty lab four solution</h3>
+          <p>Write controller that store the result of listTweets inside a factory.<p>
         </section>
 
 
@@ -582,17 +486,6 @@
   &lt;footer&gt;&lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-        </section>
-
-
-        <section>
-          <h3>Tasty lab five</h3>
-          <p>Write a single page app with an home and profile page.<p>
-        </section>
-
-
-        <section>
-          <h3>Tasty lab five solution</h3>
         </section>
 
 
