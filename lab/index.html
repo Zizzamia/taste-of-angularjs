@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="tasteAngularjs">
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
   <script src="ng-tasty-tpls.min.js"></script>
@@ -17,58 +17,63 @@
     </nav>
   </header>
   
+  <!--
   <div class="content content-two">
-    <input type="text" class="form-control" />
+    <input type="text" class="form-control" ng-model="className" />
     <br />
-    <div>
+    <div ng-class="className">
       Bootstrap component
     </div>
   </div>
-
-  <!--
+  -->
+  
+  
   <div class="content">
     <div class="timeline-tweet-box">
       <div class="home-tweet-box">
         <img src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
-        <div ng-hide="isOpenBox">
+        <div ng-hide="isOpenBox" ng-click="openBox()">
           <input class="form-control" />
         </div>
-        <div>
-          <textarea ng-model="tweet.text" class="form-control" rows="3"></textarea>
-          <button type="button" class="btn btn-info btn-sm">Tweet</button>
+        <div ng-show="isOpenBox">
+          <textarea ng-model="tweetText" class="form-control" rows="3"></textarea>
+          <button type="button" class="btn btn-info btn-sm" ng-click="createTweet()">Tweet</button>
         </div>
       </div>
     </div>
     <div class="list-group timeline">
-      <div class="tweet">
+      <div class="tweet" ng-repeat="tweet in listTweets">
         <div class="tweet-content">
           <img src="https://pbs.twimg.com/profile_images/455960725656059905/UhxENS0I_normal.jpeg" alt="">
           <div class="header">
            {{ tweet.username }}
-           <i class="time">{{ tweet.timestamp }}</i>
+           <i class="time">{{ tweet.timestamp | date }}</i>
           </div>
-          <p></p>
+          <p ng-bind="tweet.text"></p>
         </div>
       </div>
     </div>
   </div>
-  -->
+  
+  
 
   <!--
   <div class="content">
-    <input type="text" class="form-control" placeholder="Insert word to filter">
+    <input type="text" class="form-control" ng-model="filterValue"
+    placeholder="Insert word to filter">
     <table class="table table-condensed">
       <tr>
-        <th>Name</th>
-        <th>SF Location</th>
+        <th ng-click="orderBy('name')">Name</th>
+        <th ng-click="orderBy('sfLocation')">SF Location</th>
       </tr>
-      <tr>
+      <tr ng-repeat="coffee in coffeeShopsList | filter:filterValue | orderBy:keyOrder">
         <td>{{ coffee.name }}</td>
         <td>{{ coffee.sfLocation }}</td>
       </tr>
     </table>
   </div>
   -->
+
 
   <footer>
     <p>
@@ -84,17 +89,48 @@
   </footer>
           
   <script>
-    var username = 'lzizzamia';
-    var listTweets = [
-      { 'username': username, 'text': 'Ciao', 'timestamp': 1410474730056 },
-      { 'username': username, 'text': 'Ciao due', 'timestamp': 1410474617870 }
-    ];
     var data = { 'placeholder': "Che c'e' di nuovo?" };
-    var coffeeShopsList = [
-      { 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
-      { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
-      { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }
-    ];
+
+    angular.module('tasteAngularjs', [])
+    .factory('tweets', function () {
+      var username = 'lzizzamia';
+      var listTweets = [
+        { 'username': username, 'text': 'Ciao', 'timestamp': 1410474730056 },
+        { 'username': username, 'text': 'Ciao due', 'timestamp': 1410474617870 }
+      ]
+      return {
+        'get': function () {
+          return listTweets;
+        },
+        'getUsername': function () {
+          return username;
+        },
+        'create': function (text) {
+          var tweet = {
+            'username': username,
+            'text': text,
+            'timestamp': Date.now()
+          }
+          listTweets.splice(0, 0, tweet);
+        }
+      }
+    })
+    .controller('tasteController', function ($scope, tweets) {
+      $scope.isOpenBox = false;
+      $scope.openBox = function () {
+        $scope.isOpenBox = true;
+      }
+
+      $scope.username = tweets.getUsername();
+      $scope.listTweets = tweets.get();
+
+
+      $scope.tweetText = '';
+      $scope.createTweet = function () {
+        tweets.create($scope.tweetText);
+        $scope.tweetText = '';
+      };
+    })
   </script>
 </body>
 </html>
