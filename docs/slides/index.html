@@ -62,7 +62,8 @@
 
 
         <section>
-          <a href="https://github.com/angular/angular.js">
+          <a href="https://github.com/angular/angular.js/graphs/contributors" 
+          target="_blank">
             <img src="img/angular-on-github.png" width="900" alt="">
           </a>
         </section>
@@ -129,8 +130,6 @@
 
         <section>
           <h3>Tasty lab one</h3>
-          <p>Change the html to bind the class attribute<p>
-          <br />
           <input type="text" class="form-control" ng-model="className" />
           <br />
           <div ng-class="className">
@@ -202,7 +201,6 @@
 
         <section>
           <h3>Tasty lab two</h3>
-          <p>Write a function inside your controller that allow to show and hide an element<p>
           <div ng-controller="tasteController">
             <button class="btn btn-default" ng-click="show()">Show</button>
             <button class="btn btn-default" ng-click="hide()">Hide</button><br />
@@ -220,10 +218,10 @@
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
           <pre ng-non-bindable><code class="javascript">angular.module('tasteAngulajs', [])
-.controller('tasteController', function($scope) {
+.controller('tasteController', ['$scope', function($scope) {
   $scope.coffeeShops = ['Ritual Coffee', 'Blue Bottle', 
                         'Philz', 'Coffee Bar'];
-});</code></pre>
+}]);</code></pre>
 
           <ul ng-init="coffeeShops = ['Ritual Coffee', 'Blue Bottle', 'Philz', 'Coffee Bar']">
             <li ng-repeat="coffee in coffeeShops">
@@ -268,11 +266,11 @@
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
           <pre ng-non-bindable><code class="javascript" 
-          style="font-size:.9em;padding: 12px; line-height: 18px;">.controller('tasteController', function($scope) {
+          style="font-size:.9em;padding: 12px; line-height: 18px;">.controller('tasteController', ['$scope', function($scope) {
   $scope.coffeeShops = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
                         { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
                         { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }];
-});</code></pre>
+}]);</code></pre>
           <div ng-init="coffeeShopsList = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]"></div>
@@ -301,9 +299,9 @@
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
           <pre ng-non-bindable><code class="javascript" 
-          style="font-size:.9em;padding: 12px; line-height: 18px;">.controller('tasteController', function($scope) {
+          style="font-size:.9em;padding: 12px; line-height: 18px;">.controller('tasteController', ['$scope', function($scope) {
   $scope.coffeeShops = [ { 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' }, ... ];
-});</code></pre>
+}]);</code></pre>
           <div ng-init="coffeeShopsList = [{ 'name': 'Ritual Coffee', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Blue Bottle', 'sfLocation': 'Hayes Valley' },
                              { 'name': 'Coffee Bar', 'sfLocation': 'FiDi' }]"></div>
@@ -321,7 +319,6 @@
 
         <section>
           <h3>Tasty lab three</h3>
-          <p>Write a table that sort and filter a list of objects.<p>
           <div ng-controller="tasteController">
             <input type="text" class="form-control" 
             ng-model="searchFilter" placeholder="Insert word to filter">
@@ -446,7 +443,7 @@
 
         <section>
           <h3>Tasty lab four</h3>
-          <p>Write controller that store the result of listTweets inside a factory.<p>
+          <p>Write a factory that store and create tweets.<p>
         </section>
 
 
